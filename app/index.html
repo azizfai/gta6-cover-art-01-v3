@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leonida Nights — GTA-style Cover Poster Generator</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <h1>LEONIDA NIGHTS</h1>
+    <p class="tag">One-click GTA-style cover posters. Offline, free, no upload — your photos never leave this machine.</p>
+  </div>
+  <button id="generateBtn" type="button" class="generate">🎲 Generate poster</button>
+</header>
+
+<main class="layout">
+  <section class="viewer">
+    <canvas id="stage" width="1080" height="1080" aria-label="The finished poster"></canvas>
+    <p id="seedLabel" class="seed">Seed 20261119</p>
+  </section>
+
+  <aside class="controls">
+    <h2>Poster</h2>
+    <div class="group">
+      <span class="label">Template</span>
+      <div class="buttons">
+        <button type="button" data-template="sunset">Sunset Chase</button>
+        <button type="button" data-template="neon">Neon Nights</button>
+        <button type="button" data-template="beach">Beach Heist</button>
+        <button type="button" data-template="dawn">Skyline Dawn</button>
+      </div>
+    </div>
+
+    <div class="group">
+      <span class="label">Colour grade</span>
+      <div class="buttons">
+        <button type="button" data-grade="warm">Warm Sunset</button>
+        <button type="button" data-grade="neon">Neon Night</button>
+        <button type="button" data-grade="bw">Black &amp; White</button>
+        <button type="button" data-grade="vintage">Faded Vintage</button>
+      </div>
+    </div>
+
+    <div class="group">
+      <label class="label" for="seedInput">Seed (same seed = same poster)</label>
+      <input id="seedInput" type="number" value="20261119">
+    </div>
+
+    <div class="group">
+      <label class="label" for="titleInput">Title</label>
+      <input id="titleInput" type="text" maxlength="24" value="LEONIDA">
+      <label class="label" for="subtitleInput">Subtitle</label>
+      <input id="subtitleInput" type="text" maxlength="32" value="SUNSET HEIST">
+      <label class="label" for="taglineInput">Tagline</label>
+      <input id="taglineInput" type="text" maxlength="90" value="Two outlaws. One last score. Welcome to Leonida.">
+    </div>
+
+    <div class="group">
+      <label class="check"><input id="textureToggle" type="checkbox" checked> Halftone + film grain texture</label>
+    </div>
+
+    <div class="group">
+      <span class="label">Your photo (optional polaroid snapshot)</span>
+      <label class="file">Choose a photo <input id="photoInput" type="file" accept="image/*"></label>
+      <div id="photoControls" hidden>
+        <label class="label" for="photoZoom">Zoom</label>
+        <input id="photoZoom" type="range" min="1" max="3" step="0.05" value="1">
+        <label class="label" for="photoX">Position X</label>
+        <input id="photoX" type="range" min="-1" max="1" step="0.05" value="0">
+        <label class="label" for="photoY">Position Y</label>
+        <input id="photoY" type="range" min="-1" max="1" step="0.05" value="0">
+        <button id="photoRemove" type="button">Remove photo</button>
+      </div>
+    </div>
+
+    <div class="group">
+      <span class="label">Export PNG</span>
+      <div class="buttons">
+        <button type="button" data-export="1080x1080">Square 1080×1080</button>
+        <button type="button" data-export="1080x1350">Portrait 1080×1350</button>
+        <button type="button" data-export="1920x1080">Landscape 1920×1080</button>
+      </div>
+    </div>
+
+    <p id="status" role="status"></p>
+  </aside>
+</main>
+
+<section class="gallery-wrap">
+  <h2>Gallery — click a poster to load it</h2>
+  <div id="gallery" class="gallery"></div>
+</section>
+
+<footer>
+  <p>Leonida Nights — an original poster generator. All art is drawn in code; no Rockstar Games logo, artwork or fonts. Free and offline.</p>
+</footer>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+/* Leonida Nights — dark gallery UI. The poster canvas is the star. */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: #0d0a14;
+  color: #f2ecff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 24px;
+  background: linear-gradient(90deg, #2a0a4a, #7a1040 55%, #ff5e78);
+  border-bottom: 3px solid #ffd76a;
+}
+.topbar h1 {
+  margin: 0;
+  font-family: "Arial Black", Arial, sans-serif;
+  font-size: 30px;
+  letter-spacing: 3px;
+  color: #fff;
+  text-shadow: 3px 3px 0 #0d0a14;
+}
+.topbar .tag { margin: 4px 0 0; color: #ffe9f2; font-size: 14px; }
+.generate {
+  font-family: "Arial Black", Arial, sans-serif;
+  font-size: 16px;
+  padding: 12px 20px;
+  border: 2px solid #0d0a14;
+  border-radius: 10px;
+  background: #ffd76a;
+  color: #0d0a14;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.generate:hover { background: #ffe9a8; }
+.layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 640px) 340px;
+  gap: 24px;
+  padding: 24px;
+  align-items: start;
+}
+.viewer { text-align: center; }
+#stage {
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  border: 2px solid #3a2a5e;
+  border-radius: 8px;
+  background: #000;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+.seed { color: #c9b8ff; font-family: "Courier New", monospace; }
+.controls {
+  background: #171226;
+  border: 1px solid #3a2a5e;
+  border-radius: 12px;
+  padding: 18px;
+}
+.controls h2 { margin: 0 0 12px; font-family: "Arial Black", Arial, sans-serif; letter-spacing: 2px; }
+.group { margin-bottom: 16px; }
+.label { display: block; font-size: 13px; color: #c9b8ff; margin: 8px 0 4px; }
+.buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+.buttons button, #photoRemove {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #5a3a8e;
+  background: #241a3d;
+  color: #f2ecff;
+  cursor: pointer;
+  font-size: 14px;
+}
+.buttons button:hover, #photoRemove:hover { background: #332452; }
+.buttons button.active { background: #ff5e78; border-color: #ff5e78; color: #fff; }
+input[type="text"], input[type="number"] {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #5a3a8e;
+  background: #0d0a14;
+  color: #f2ecff;
+  font-size: 14px;
+}
+input[type="range"] { width: 100%; }
+.check { font-size: 14px; }
+.file { font-size: 14px; color: #ffd76a; cursor: pointer; }
+.file input { display: none; }
+#status { color: #8fe3b0; min-height: 20px; font-size: 14px; }
+.gallery-wrap { padding: 0 24px 24px; }
+.gallery-wrap h2 { font-family: "Arial Black", Arial, sans-serif; letter-spacing: 2px; }
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+.thumb {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 2px solid #3a2a5e;
+  cursor: pointer;
+}
+.thumb:hover { border-color: #ff5e78; }
+footer { padding: 16px 24px 28px; color: #9a8cc0; font-size: 13px; }
+/* Screenshot mode: the poster alone fills the whole frame, no UI chrome. */
+body.shot-cover { background: #000; }
+body.shot-cover .topbar,
+body.shot-cover .controls,
+body.shot-cover .gallery-wrap,
+body.shot-cover footer { display: none !important; }
+body.shot-cover .layout { display: block; padding: 0; }
+body.shot-cover .viewer { text-align: left; }
+body.shot-cover #stage {
+  display: block;
+  max-width: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+body.shot-cover .seed { display: none; }
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+}
